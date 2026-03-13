@@ -15,7 +15,7 @@ pip install requests
 
 ```python
 import requests
-from fortisase_auth import FortiSASEAuth
+from fortisase_auth import FortiSASEAuth, BASE_URL
 
 auth = FortiSASEAuth(
     api_id="your_api_id",
@@ -26,7 +26,7 @@ session = requests.Session()
 session.auth = auth
 
 # Tokens are fetched and refreshed automatically
-response = session.get("https://your-tenant.fortisase.com/api/v1/monitor/user/info")
+response = session.get(f"{BASE_URL}/monitor-api/v1/traffic-history")
 print(response.json())
 ```
 
@@ -88,6 +88,11 @@ Refresh token itself expired
 The token endpoint is the same for all FortiSASE API implementations — it is a shared FortiCloud authentication service, not tenant-specific:
 ```
 POST https://customerapiauth.fortinet.com/api/v1/oauth/token/
+```
+
+The base URL for all FortiSASE API endpoints is also fixed:
+```
+https://portal.prod.fortisase.com
 ```
 
 ## API Reference
