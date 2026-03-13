@@ -85,7 +85,7 @@ Refresh token itself expired
     └─► Falls back to full password grant automatically
 ```
 
-The token endpoint used is:
+The token endpoint is the same for all FortiSASE API implementations — it is a shared FortiCloud authentication service, not tenant-specific:
 ```
 POST https://customerapiauth.fortinet.com/api/v1/oauth/token/
 ```
